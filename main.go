@@ -89,7 +89,8 @@ func hookRequest(w http.ResponseWriter, r *http.Request) {
 	defer mu.Unlock()
 
 	for _, trigger := range triggers {
-		payload, err := trigger.gitWebhook.Parse(r, github.CheckRunEvent)
+
+		payload, err := trigger.gitWebhook.Parse(r, github.PushEvent)
 		if err != nil {
 			if err == github.ErrEventNotFound {
 				fmt.Printf("Ignoring event %s: %s\n", github.Event(r.Header.Get("X-GitHub-Event")), err)
@@ -99,20 +100,22 @@ func hookRequest(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 
-		switch req := payload.(type) {
+		switch payload.(type) {
 		case github.PingPayload:
 			fmt.Println("Ping event received")
-		case github.CheckRunPayload:
-			repoName := req.Repository.Name
-			if req.CheckRun.Status != "completed" {
-				fmt.Printf("Ignoring incomplete check run for %s: %s\n", repoName, req.CheckRun.Status)
-				return
-			}
-			if req.CheckRun.Conclusion != "success" {
-				sendDiscordMessage(trigger, fmt.Sprintf("Failed to deploy %s %s: Github Action resulted in %s", trigger.event.Name, repoName, req.CheckRun.Conclusion))
-				fmt.Printf("Ignoring failed check run for %s: %s\n", repoName, req.CheckRun.Conclusion)
-				return
-			}
+		case github.PushPayload:
+			//req.Repository.Name
+			//repoName := req.Repository.Name
+			// if req.CheckRun.Status != "completed" {
+			// 	fmt.Printf("Ignoring incomplete check run for %s: %s\n", repoName, req.CheckRun.Status)
+			// 	return
+			// }
+			// if req.CheckRun.Conclusion != "success" {
+			// 	sendDiscordMessage(trigger, fmt.Sprintf("Failed to deploy %s %s: Github Action resulted in %s", trigger.event.Name, repoName, req.CheckRun.Conclusion))
+			// 	fmt.Printf("Ignoring failed check run for %s: %s\n", repoName, req.CheckRun.Conclusion)
+			// 	return
+			// }
+
 			go deploy(trigger)
 		}
 	}
