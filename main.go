@@ -63,7 +63,7 @@ func run() error {
 		}
 		gitWebhook, err := github.New(github.Options.Secret(evt.WebhookToken))
 		if err != nil {
-			return fmt.Errorf(evt.Name, "github new: %w", err)
+			return fmt.Errorf("github new %s: %w", evt.Name, err)
 		}
 		trigger := &Trigger{
 			event:      &evt,
@@ -73,6 +73,11 @@ func run() error {
 	}
 	if !isValid {
 		return fmt.Errorf("invalid configuration")
+	}
+
+	fmt.Println("Subscribed to the following events:")
+	for _, trigger := range triggers {
+		fmt.Println("  ", trigger.event.Name)
 	}
 
 	fmt.Println("webhook", Version, "listening on :3000")
@@ -96,7 +101,7 @@ func hookRequest(w http.ResponseWriter, r *http.Request) {
 				fmt.Printf("Ignoring event %s %s: %s\n", trigger.event.Name, github.Event(r.Header.Get("X-GitHub-Event")), err)
 				continue
 			}
-			fmt.Printf("Failed to parse hook %s: %s", trigger.event.Name, err)
+			fmt.Printf("Failed to parse hook %s: %s\n", trigger.event.Name, err)
 			continue
 		}
 
