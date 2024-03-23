@@ -93,10 +93,10 @@ func hookRequest(w http.ResponseWriter, r *http.Request) {
 		payload, err := trigger.gitWebhook.Parse(r, github.PushEvent)
 		if err != nil {
 			if err == github.ErrEventNotFound {
-				fmt.Printf("Ignoring event %s: %s\n", github.Event(r.Header.Get("X-GitHub-Event")), err)
+				fmt.Printf("Ignoring event %s %s: %s\n", trigger.event.Name, github.Event(r.Header.Get("X-GitHub-Event")), err)
 				continue
 			}
-			fmt.Println("Failed to parse hook:", err)
+			fmt.Printf("Failed to parse hook %s: %s", trigger.event.Name, err)
 			continue
 		}
 
