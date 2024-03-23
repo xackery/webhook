@@ -99,6 +99,8 @@ func hookRequest(w http.ResponseWriter, r *http.Request) {
 		}
 
 		switch req := payload.(type) {
+		case github.PingPayload:
+			fmt.Println("Ping event received")
 		case github.CheckRunPayload:
 			repoName := req.Repository.Name
 			if req.CheckRun.Status != "completed" {
