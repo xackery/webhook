@@ -4,7 +4,7 @@ go 1.21.5
 
 require (
 	github.com/go-playground/webhooks/v6 v6.3.0
-	github.com/jbsmith7741/toml v0.3.0
+	github.com/jbsmith7741/toml v0.3.1-0.20171003150610-484e047de162
 	github.com/rs/zerolog v1.32.0
 )
 

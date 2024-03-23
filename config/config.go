@@ -99,6 +99,24 @@ func (c *Config) Verify() error {
 func getDefaultConfig() Config {
 	cfg := Config{
 		Debug: true,
+		Events: []Event{
+			{
+				Name:           "event1",
+				WebhookToken:   "generated-in-github",
+				DiscordWebhook: "generated-in-discord",
+				Path:           "/path/to/working/directory",
+				Command:        "echo",
+				Args:           []string{"Hello, World!"},
+			},
+			{
+				Name:           "event2",
+				WebhookToken:   "generated-in-github",
+				DiscordWebhook: "generated-in-discord",
+				Path:           "/path/to/working/directory",
+				Command:        "echo",
+				Args:           []string{"Hello, World!"},
+			},
+		},
 	}
 
 	return cfg

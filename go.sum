@@ -5,8 +5,8 @@ github.com/go-playground/webhooks/v6 v6.3.0 h1:zBLUxK1Scxwi97TmZt5j/B/rLlard2zY7
 github.com/go-playground/webhooks/v6 v6.3.0/go.mod h1:GCocmfMtpJdkEOM1uG9p2nXzg1kY5X/LtvQgtPHUaaA=
 github.com/godbus/dbus/v5 v5.0.4/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/gogits/go-gogs-client v0.0.0-20200905025246-8bb8a50cb355/go.mod h1:cY2AIrMgHm6oOHmR7jY+9TtjzSjQ3iG7tURJG3Y6XH0=
-github.com/jbsmith7741/toml v0.3.0 h1:+1qIqCh2hBswY+v6iVyr/l+Kez8ENkKIb8iaqqkgAmE=
-github.com/jbsmith7741/toml v0.3.0/go.mod h1:o4ckjJq80DhkYQkTmdlzpirs0PY+xZ8x4pPn3q+ZW0s=
+github.com/jbsmith7741/toml v0.3.1-0.20171003150610-484e047de162 h1:uk8KzVVLVX4EGQUwYOCgOWnAWH/IXjE0ChA6s9PTtgw=
+github.com/jbsmith7741/toml v0.3.1-0.20171003150610-484e047de162/go.mod h1:o4ckjJq80DhkYQkTmdlzpirs0PY+xZ8x4pPn3q+ZW0s=
 github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
 github.com/mattn/go-colorable v0.1.13/go.mod h1:7S9/ev0klgBDR4GtXTXX8a3vIGJpMovkB8vQcUbaXHg=
 github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=

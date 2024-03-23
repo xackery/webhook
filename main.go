@@ -21,6 +21,7 @@ var (
 	triggers []*Trigger
 )
 
+// Trigger represents a webhook trigger
 type Trigger struct {
 	event      *config.Event
 	gitWebhook *github.Webhook
