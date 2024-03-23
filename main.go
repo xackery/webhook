@@ -19,6 +19,7 @@ import (
 var (
 	mu       sync.Mutex
 	triggers []*Trigger
+	Version  string
 )
 
 // Trigger represents a webhook trigger
@@ -74,7 +75,7 @@ func run() error {
 		return fmt.Errorf("invalid configuration")
 	}
 
-	fmt.Println("Listening on :3000")
+	fmt.Println("webhook", Version, "listening on :3000")
 	http.HandleFunc("/webhooks", hookRequest)
 	err = http.ListenAndServe(":3000", nil)
 	if err != nil {
