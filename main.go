@@ -127,6 +127,21 @@ func hookRequest(w http.ResponseWriter, r *http.Request) {
 }
 
 func deploy(trigger *Trigger) {
+
+	if trigger.event.DoGitPull {
+		err := os.Chdir(trigger.event.Path)
+		if err != nil {
+			fmt.Println("chdir", trigger.event.Path, err)
+			return
+		}
+		cmd := exec.Command("git", "pull")
+		err = cmd.Run()
+		if err != nil {
+			fmt.Println("git pull", err)
+			return
+		}
+	}
+
 	start := time.Now()
 	fmt.Println("Deploying:", trigger.event.Name)
 	result, err := onDeploy(trigger)

@@ -18,6 +18,7 @@ type Config struct {
 
 type Event struct {
 	Name           string   `toml:"name" desc:"Event name"`
+	DoGitPull      bool     `toml:"do_git_pull" desc:"Do a git pull before running command"`
 	WebhookToken   string   `toml:"webhook_token" desc:"Webhook token"`
 	DiscordWebhook string   `toml:"discord_webhook" desc:"Discord webhook"`
 	Path           string   `toml:"path" desc:"Working directory path for hook trigger"`
