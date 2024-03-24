@@ -103,6 +103,7 @@ func getDefaultConfig() Config {
 		Events: []Event{
 			{
 				Name:           "event1",
+				DoGitPull:      true,
 				WebhookToken:   "generated-in-github",
 				DiscordWebhook: "generated-in-discord",
 				Path:           "/path/to/working/directory",
@@ -111,6 +112,7 @@ func getDefaultConfig() Config {
 			},
 			{
 				Name:           "event2",
+				DoGitPull:      true,
 				WebhookToken:   "generated-in-github",
 				DiscordWebhook: "generated-in-discord",
 				Path:           "/path/to/working/directory",

@@ -141,6 +141,8 @@ func deploy(trigger *Trigger) {
 		if err != nil {
 			gitResult = fmt.Sprintf("Failed to git pull %s: %s\n", trigger.event.Name, err)
 		}
+	} else {
+		fmt.Println("Skipping git pull for", trigger.event.Name)
 	}
 
 	start := time.Now()
