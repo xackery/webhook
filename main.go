@@ -156,6 +156,7 @@ func onDeploy(trigger *Trigger) (string, error) {
 	cmd := exec.Command(trigger.event.Command, trigger.event.Args...)
 	cmd.Stdout = &out
 	cmd.Stderr = &out
+	cmd.Env = os.Environ()
 	err = cmd.Run()
 	if err != nil {
 		result := fmt.Sprintf("**Deploying %s FAILED**:\n```\n", trigger.event.Name)
