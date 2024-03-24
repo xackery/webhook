@@ -20,4 +20,3 @@ jobs:
             bin/webhook-linux
             bin/webhook-windows.exe
             bin/webhook-darwin
-            lua/issue.lua
