@@ -66,7 +66,7 @@ func run() error {
 			return fmt.Errorf("github new %s: %w", evt.Name, err)
 		}
 		trigger := &Trigger{
-			event:      &config.Event{Name: evt.Name, WebhookToken: evt.WebhookToken, DiscordWebhook: evt.DiscordWebhook, Path: evt.Path, Command: evt.Command, Args: evt.Args},
+			event:      &config.Event{Name: evt.Name, WebhookToken: evt.WebhookToken, DiscordWebhook: evt.DiscordWebhook, Path: evt.Path, Command: evt.Command, Args: evt.Args, DoGitPull: evt.DoGitPull},
 			gitWebhook: gitWebhook,
 		}
 		triggers = append(triggers, trigger)
